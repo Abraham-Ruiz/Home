@@ -2,5 +2,5 @@ theme: jekyll-theme-minimal
 title: Your Name
 description: A short description: writeups and projects.
 # For a user site change url to: https://USERNAME.github.io
-url: https://Abraham-Ruiz.github.io # optional; remove until you set your custom domain
+url: https://Abraham-Ruiz.github.io/home # optional; remove until you set your custom domain
 baseurl: "" # leave empty for user site
