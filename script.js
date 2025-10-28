@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function renderWriteups() {
     // This will find 'writeups-container' on the homepage
 // OR 'writeups-grid' on the projects page.
-const container = document.getElementById('writeups-container') || document.getElementById('writeups-grid');
+const container = document.getElementById('writeups-container');
     if (!container) return;
 
     container.innerHTML = writeups.map(writeup => `
