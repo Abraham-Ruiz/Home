@@ -6,8 +6,33 @@
     <title>Writeups | Cyber Log</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                        },
+                        secondary: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script src="Components/navbar.js" defer></script>
+    <script src="Components/footer.js" defer></script>
+    <script src="script.js" defer></script>
+
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
     <custom-navbar></custom-navbar>
@@ -45,124 +70,5 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="writeups-grid">
-                <!-- Writeup cards will be populated by JavaScript -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in">
-                    <div class="h-48 bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
-                        <i data-feather="flag" class="w-16 h-16 text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">HTB - Challenge One</h3>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                Easy
-                            </span>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                Web
-                            </span>
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                SQLi
-                            </span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Basic SQL injection challenge with simple bypass techniques.</p>
-                        <a href="#" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 font-medium">
-                            Read Writeup
-                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in">
-                    <div class="h-48 bg-gradient-to-r from-secondary-500 to-primary-500 flex items-center justify-center">
-                        <i data-feather="lock" class="w-16 h-16 text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">THM - Crypto Challenge</h3>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                Medium
-                            </span>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                Crypto
-                            </span>
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                RSA
-                            </span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Weak RSA implementation with common modulus attack.</p>
-                        <a href="#" class="inline-flex items-center text-secondary-500 hover:text-secondary-600 dark:hover:text-secondary-400 font-medium">
-                            Read Writeup
-                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in">
-                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <i data-feather="code" class="w-16 h-16 text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">CTF - RE Challenge</h3>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                                Hard
-                            </span>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                Reverse
-                            </span>
-                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-                                x86
-                            </span>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Custom packer with anti-debugging techniques.</p>
-                        <a href="#" class="inline-flex items-center text-purple-500 hover:text-purple-600 dark:hover:text-purple-400 font-medium">
-                            Read Writeup
-                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-12 flex justify-center">
-                <nav class="inline-flex rounded-md shadow">
-                    <a href="#" class="px-4 py-2 rounded-l-md border border-r-0 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <i data-feather="chevron-left"></i>
-                    </a>
-                    <a href="#" class="px-4 py-2 border-t border-b border-gray-300 dark:border-gray-600 bg-primary-500 text-white">
-                        1
-                    </a>
-                    <a href="#" class="px-4 py-2 border-t border-b border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                        2
-                    </a>
-                    <a href="#" class="px-4 py-2 border-t border-b border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                        3
-                    </a>
-                    <a href="#" class="px-4 py-2 rounded-r-md border border-l-0 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <i data-feather="chevron-right"></i>
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </main>
-
-    <custom-footer></custom-footer>
-
-    <!-- Scripts -->
-    <script src="components/navbar.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="script.js"></script>
-    <script>
-        feather.replace();
-        // Additional functionality for projects page
-        document.addEventListener('DOMContentLoaded', function() {
-            // This would be replaced with actual data loading in a real app
-            console.log('Projects page loaded');
-        });
-    </script>
-</body>
-</html>
+                    <div class="h-48 bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-
