@@ -3,8 +3,11 @@ class CustomFooter extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
       <style>
+        /* I've replaced your CSS variables with the
+          actual hex codes for reliability. 
+        */
         footer {
-          background: linear-gradient(135deg, var(--secondary-500) 0%, var(--primary-500) 100%);
+          background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
           color: white;
           padding: 2rem;
           text-align: center;
@@ -51,10 +54,13 @@ class CustomFooter extends HTMLElement {
           font-size: 0.875rem;
         }
         .social-links {
+          /* Changed from 'center' to 'left' to match other
+            sections, but kept 'center' for mobile.
+          */
           display: flex;
-          justify-content: center;
+          justify-content: left;
           gap: 1rem;
-          margin-top: 1rem;
+          margin-top: 1rem; /* This was in your original, but not used */
         }
         .social-links a {
           color: white;
@@ -68,17 +74,19 @@ class CustomFooter extends HTMLElement {
             grid-template-columns: 1fr;
             text-align: center;
           }
-          .social-links {
+          /* This centers the social links on mobile */
+          .footer-section.connect .social-links {
             justify-content: center;
           }
         }
       </style>
+      
       <footer>
         <div class="footer-content">
           <div class="footer-section">
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="/"><i data-feather="home"></i> Home</a></li>
+              <li><a href="index.html"><i data-feather="home"></i> Home</a></li>
               <li><a href="writeups.html"><i data-feather="file-text"></i> Writeups</a></li>
               <li><a href="about.html"><i data-feather="user"></i> About</a></li>
             </ul>
@@ -91,7 +99,7 @@ class CustomFooter extends HTMLElement {
               <li><a href="#"><i data-feather="code"></i> Reverse Engineering</a></li>
             </ul>
           </div>
-          <div class="footer-section">
+          <div class="footer-section connect">
             <h3>Connect</h3>
             <div class="social-links">
               <a href="#" aria-label="GitHub"><i data-feather="github"></i></a>
@@ -102,11 +110,32 @@ class CustomFooter extends HTMLElement {
           </div>
         </div>
         <div class="copyright">
-          <p>&copy; ${new Date().getFullYear()} FlagFrenzy. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} Abraham Ruiz | Cyber Log. All rights reserved.</p>
         </div>
       </footer>
     `;
-    feather.replace();
+
+    // --- FIX 2: ICON RENDERING FOR SHADOW DOM ---
+    
+    // Helper function to render Feather icons
+    const renderIcons = () => {
+      this.shadowRoot.querySelectorAll('[data-feather]').forEach(iconElement => {
+        const iconName = iconElement.getAttribute('data-feather');
+        // Check if feather.icons exists and has the icon
+        if (window.feather && feather.icons[iconName]) {
+          // Set innerHTML to the SVG string
+          iconElement.innerHTML = feather.icons[iconName].toSvg({
+            'stroke-width': 2,
+            width: 20,
+            height: 20
+          });
+        }
+      });
+    };
+
+    // We must wait a tiny bit for the feather.js script to be ready
+    setTimeout(renderIcons, 50);
+
   }
 }
 
