@@ -2,7 +2,7 @@
 title: Home
 ---
 
-Hi — I'm Your Name. This site contains short writeups and project links.
+Hi — I'm Abraham . This site contains short writeups and project links.
 
 - [Projects](/projects/)
 - [Blog](/)
