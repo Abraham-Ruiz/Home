@@ -79,7 +79,7 @@ class CustomFooter extends HTMLElement {
             <h3>Quick Links</h3>
             <ul>
               <li><a href="/"><i data-feather="home"></i> Home</a></li>
-              <li><a href="projects.html"><i data-feather="file-text"></i> Writeups</a></li>
+              <li><a href="writeups.html"><i data-feather="file-text"></i> Writeups</a></li>
               <li><a href="about.html"><i data-feather="user"></i> About</a></li>
             </ul>
           </div>
