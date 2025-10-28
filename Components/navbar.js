@@ -83,7 +83,7 @@ class CustomNavbar extends HTMLElement {
       <nav>
         <a href="index.html" class="logo">
           <i data-feather="terminal"></i>
-          Abraham Ruiz
+          Cyber Blog
         </a>
         <ul class="nav-links">
           <li><a href="index.html" id="nav-home"><i data-feather="home"></i> Home</a></li>
