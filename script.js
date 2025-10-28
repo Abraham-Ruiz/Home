@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function renderWriteups() {
-    const container = document.getElementById('writeups-container');
+    // This will find 'writeups-container' on the homepage
+// OR 'writeups-grid' on the projects page.
+const container = document.getElementById('writeups-container') || document.getElementById('writeups-grid');
     if (!container) return;
 
     container.innerHTML = writeups.map(writeup => `
