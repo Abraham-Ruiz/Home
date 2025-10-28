@@ -87,7 +87,7 @@ class CustomNavbar extends HTMLElement {
         </a>
         <ul class="nav-links">
           <li><a href="index.html" id="nav-home"><i data-feather="home"></i> Home</a></li>
-          <li><a href="projects.html" id="nav-projects"><i data-feather="file-text"></i> Writeups</a></li>
+          <li><a href="writeups.html" id="nav-projects"><i data-feather="file-text"></i> Writeups</a></li>
           <li><a href="about.html" id="nav-about"><i data-feather="user"></i> About</a></li>
           <li>
             <button class="theme-toggle" id="themeToggle">
@@ -134,7 +134,7 @@ class CustomNavbar extends HTMLElement {
     const currentPage = window.location.pathname.split('/').pop();
     if (currentPage === 'index.html' || currentPage === '') {
       shadow.getElementById('nav-home')?.classList.add('active');
-    } else if (currentPage === 'projects.html') {
+    } else if (currentPage === 'writeups.html') {
       shadow.getElementById('nav-projects')?.classList.add('active');
     } else if (currentPage === 'about.html') {
       shadow.getElementById('nav-about')?.classList.add('active');
