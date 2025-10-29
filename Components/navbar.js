@@ -3,11 +3,8 @@ class CustomNavbar extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
       <style>
-        /* This is your original CSS, but with colors hard-coded */
+        /* Your CSS is perfect, no changes needed */
         nav {
-          /* I replaced var(--primary-500) with your hex code #3b82f6
-            and var(--secondary-500) with #10b981
-          */
           background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
           padding: 1rem 2rem;
           display: flex;
@@ -22,7 +19,7 @@ class CustomNavbar extends HTMLElement {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          text-decoration: none; /* Added this for the logo link */
+          text-decoration: none;
         }
         .nav-links {
           display: flex;
@@ -57,12 +54,13 @@ class CustomNavbar extends HTMLElement {
           border-radius: 50%;
           transition: all 0.2s;
           display: flex;
-          align-items: center; /* Added for centering */
+          align-items: center;
         }
         .theme-toggle:hover {
           background: rgba(255, 255, 255, 0.1);
         }
         @media (max-width: 768px) {
+          /* Your responsive styles are also fine */
           nav {
             flex-direction: column;
             gap: 1rem;
@@ -87,11 +85,11 @@ class CustomNavbar extends HTMLElement {
         </a>
         <ul class="nav-links">
           <li><a href="index.html" id="nav-home"><i data-feather="home"></i> Home</a></li>
-          <li><a href="writeups.html" id="nav-projects"><i data-feather="file-text"></i> Writeups</a></li>
+          <li><a href="Writeups/index.html" id="nav-projects"><i data-feather="file-text"></i> Writeups</a></li>
           <li><a href="about.html" id="nav-about"><i data-feather="user"></i> About</a></li>
           <li>
             <button class="theme-toggle" id="themeToggle">
-              </button>
+            </button>
           </li>
         </ul>
       </nav>
@@ -101,13 +99,11 @@ class CustomNavbar extends HTMLElement {
 
     const shadow = this.shadowRoot;
     
-    // Helper function to render Feather icons inside the Shadow DOM
+    // Helper function to render Feather icons
     const renderIcons = () => {
       shadow.querySelectorAll('[data-feather]').forEach(iconElement => {
         const iconName = iconElement.getAttribute('data-feather');
-        // Check if feather.icons exists and has the icon
         if (window.feather && feather.icons[iconName]) {
-          // Set innerHTML to the SVG string
           iconElement.innerHTML = feather.icons[iconName].toSvg({
             'stroke-width': 2,
             width: 20,
@@ -130,17 +126,25 @@ class CustomNavbar extends HTMLElement {
       }
     };
 
-    // --- Active Page Link Logic ---
-    const currentPage = window.location.pathname.split('/').pop();
-    if (currentPage === 'index.html' || currentPage === '') {
-      shadow.getElementById('nav-home')?.classList.add('active');
-    } else if (currentPage === 'writeups.html') {
-      shadow.getElementById('nav-projects')?.classList.add('active');
-    } else if (currentPage === 'about.html') {
-      shadow.getElementById('nav-about')?.classList.add('active');
+    // --- 
+    // FIX #2: Corrected "Active Page" logic
+    // ---
+    const currentPath = window.location.pathname; // e.g., /REPO_NAME/Writeups/index.html
+    const homeLink = shadow.getElementById('nav-home');
+    const projectsLink = shadow.getElementById('nav-projects');
+    const aboutLink = shadow.getElementById('nav-about');
+
+    // This logic checks the path for keywords, which is much safer.
+    if (currentPath.includes('Writeups/')) {
+      projectsLink?.classList.add('active');
+    } else if (currentPath.includes('about.html')) {
+      aboutLink?.classList.add('active');
+    } else {
+      // Default to Home (for / or /index.html)
+      homeLink?.classList.add('active');
     }
 
-    // --- Theme Toggle Logic ---
+    // --- Theme Toggle Logic (No changes needed) ---
     const themeToggle = shadow.getElementById('themeToggle');
     themeToggle?.addEventListener('click', () => {
       const html = document.documentElement;
@@ -157,9 +161,7 @@ class CustomNavbar extends HTMLElement {
       updateThemeIcon(newTheme);
     });
 
-    // --- Initial Load ---
-    
-    // 1. Set initial theme
+    // --- Initial Load (No changes needed) ---
     const currentTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme = (currentTheme === 'dark' || (!currentTheme && prefersDark)) ? 'dark' : 'light';
@@ -170,12 +172,10 @@ class CustomNavbar extends HTMLElement {
       document.documentElement.classList.remove('dark');
     }
 
-    // 2. Render all icons
-    // We must wait a tiny bit for the feather.js script to be ready
     setTimeout(() => {
       renderIcons();
-      updateThemeIcon(initialTheme); // Set the correct theme icon
-    }, 50); // 50ms is usually more than enough
+      updateThemeIcon(initialTheme);
+    }, 50);
   }
 }
 
