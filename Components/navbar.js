@@ -5,7 +5,7 @@ class CustomNavbar extends HTMLElement {
       <style>
         /* Your CSS is perfect, no changes needed */
         nav {
-          background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+          background: linear-gradient(135deg, #3b82f6 0%, #10b81 100%);
           padding: 1rem 2rem;
           display: flex;
           justify-content: space-between;
@@ -60,7 +60,6 @@ class CustomNavbar extends HTMLElement {
           background: rgba(255, 255, 255, 0.1);
         }
         @media (max-width: 768px) {
-          /* Your responsive styles are also fine */
           nav {
             flex-direction: column;
             gap: 1rem;
@@ -95,8 +94,9 @@ class CustomNavbar extends HTMLElement {
       </nav>
     `;
 
-    // --- JavaScript for Theme Toggle and Icons ---
+    // --- Start of JavaScript Logic ---
 
+    // Declare shadow ONE time
     const shadow = this.shadowRoot;
     
     // Helper function to render Feather icons
@@ -126,25 +126,21 @@ class CustomNavbar extends HTMLElement {
       }
     };
 
-    // --- 
-    // FIX #2: Corrected "Active Page" logic
-    // ---
     // --- Active Page Link Logic ---
-  const shadow = this.shadowRoot;
-  const currentPage = window.location.pathname.split('/').pop();
+    const currentPage = window.location.pathname.split('/').pop();
 
-      if (currentPage === 'writeups.html' || currentPage === 'ncllogwriteup.html') {
-      shadow.getElementById('nav-projects')?.classList.add('active');
-  }   else if (currentPage === 'about.html') {
+    if (currentPage === 'writeups.html' || currentPage === 'ncllogwriteup.html') {
+      shadow.getElementById('nav-projects')?.classList..add('active');
+    } else if (currentPage === 'about.html') {
       shadow.getElementById('nav-about')?.classList.add('active');
-}     else {
-    // Default to Home for 'index.html' or ''
+    } else {
+      // Default to Home for 'index.html' or ''
       shadow.getElementById('nav-home')?.classList.add('active');
-}
+    }
 
-    // --- Theme Toggle Logic (No changes needed) ---
-  const themeToggle = shadow.getElementById('themeToggle');
-      themeToggle?.addEventListener('click', () => {
+    // --- Theme Toggle Logic ---
+    const themeToggle = shadow.getElementById('themeToggle');
+    themeToggle?.addEventListener('click', () => {
       const html = document.documentElement;
       let newTheme;
       if (html.classList.contains('dark')) {
@@ -159,7 +155,7 @@ class CustomNavbar extends HTMLElement {
       updateThemeIcon(newTheme);
     });
 
-    // --- Initial Load (No changes needed) ---
+    // --- Initial Load ---
     const currentTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme = (currentTheme === 'dark' || (!currentTheme && prefersDark)) ? 'dark' : 'light';
@@ -170,6 +166,7 @@ class CustomNavbar extends HTMLElement {
       document.documentElement.classList.remove('dark');
     }
 
+    // Render icons after a short delay
     setTimeout(() => {
       renderIcons();
       updateThemeIcon(initialTheme);
