@@ -1,5 +1,0 @@
-title: Cyber Log
-description: CTF Writeups & Cyber Notes
-markdown: kramdown
-plugins:
-  - jekyll-feed
