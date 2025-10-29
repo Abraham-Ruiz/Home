@@ -6,7 +6,7 @@ class CustomNavbar extends HTMLElement {
         /* This is your original CSS, but with colors hard-coded */
         nav {
           /* I replaced var(--primary-500) with your hex code #3b82f6
-            and var(--secondary-500) with #10b981
+             and var(--secondary-500) with #10b981
           */
           background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
           padding: 1rem 2rem;
@@ -91,7 +91,7 @@ class CustomNavbar extends HTMLElement {
           <li><a href="about.html" id="nav-about"><i data-feather="user"></i> About</a></li>
           <li>
             <button class="theme-toggle" id="themeToggle">
-              </button>
+            </button>
           </li>
         </ul>
       </nav>
@@ -131,10 +131,11 @@ class CustomNavbar extends HTMLElement {
     };
 
     // --- Active Page Link Logic ---
+    // THIS SECTION IS NOW CORRECT
     const currentPage = window.location.pathname.split('/').pop();
     if (currentPage === 'index.html' || currentPage === '') {
       shadow.getElementById('nav-home')?.classList.add('active');
-    } else if (currentPage === 'writeups.html') {
+    } else if (currentPage === 'writeups.html' || currentPage === 'ncllogwriteup.html') {
       shadow.getElementById('nav-projects')?.classList.add('active');
     } else if (currentPage === 'about.html') {
       shadow.getElementById('nav-about')?.classList.add('active');
