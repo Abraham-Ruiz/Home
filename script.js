@@ -5,19 +5,13 @@
 // Just copy the object and add a new one.
 const allWriteups = [
     {
-        href: "Writeups/my-first-writeup.html",
-        title: "My First Writeup Title",
+        href: "ncllogwriteup.html", // <-- This is the fix
+        title: "NCL Log Writeup",
         category: "Web Exploitation",
         difficulty: "Easy",
-        summary: "A short description of the challenge and what I learned."
-    },
-    // {
-    //   href: "Writeups/my-second-writeup.html",
-    //   title: "Another Writeup",
-    //   category: "Reverse Engineering",
-    //   difficulty: "Medium",
-    //   summary: "This was a tricky one!"
-    // }
+        summary: "My writeup for the NCL log challenge."
+    }
+    // Add more writeups here
 ];
 
 
