@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Writeup | Cyber Log</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="../Components/navbar.js" defer></script>
+    <script src="../Components/footer.js" defer></script>
+    <script src="../script.js" defer></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { /* ... your theme ... */ }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-10 rounded-lg shadow-lg">
+
+            <div class="mb-6">
+                <a href="index.html" class="inline-flex items-center text-primary-500 hover:text-primary-600">
+                    <i data-feather="arrow-left" class="mr-2"></i>
+                    Back to all writeups
+                </a>
+            </div>
+
+            <header class="border-b dark:border-gray-700 pb-6 mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    My First Writeup Title
+                </h1>
+                <div class="flex flex-wrap gap-2">
+                    <span classT="..."></span>
+                </div>
+            </header>
+
+            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 text-lg">
+                <h2>The Challenge</h2>
+                <p>Start writing your content here. The 'prose' class will style it.</p>
+                <pre><code># You can add code blocks
+echo "Hello!"
+                </code></pre>
+            </div>
+            
+        </article>
+    </main>
+
+    <custom-footer></custom-footer>
+    
+    <script>
+      feather.replace();
+    </script>
+</body>
+</html>
