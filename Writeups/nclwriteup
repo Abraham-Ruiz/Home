@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>My First Writeup Title | Cyber Log</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="../Components/navbar.js" defer></script>
+    <script src="../Components/footer.js" defer></script>
+    <script src="../script.js" defer></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#3b82f6', 600: '#2563eb' },
+                        secondary: { 500: '#10b981', 600: '#059669' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <article class="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-10 rounded-lg shadow-lg">
+
+            <div class="mb-6">
+                <a href="index.html" class="inline-flex items-center text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors">
+                    <i data-feather="arrow-left" class="mr-2"></i>
+                    Back to all writeups
+                </a>
+            </div>
+
+            <header class="border-b border-gray-200 dark:border-gray-700 pb-6 mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Your Writeup Title Here
+                </h1>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-sm font-semibold px-3 py-1 rounded-full">
+                        Web Exploitation
+                    </span>
+                    <span class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-semibold px-3 py-1 rounded-full">
+                        Easy
+                    </span>
+                    <span class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm font-semibold px-3 py-1 rounded-full">
+                        PicoCTF
+                    </span>
+                </div>
+            </header>
+
+            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 text-lg">
+                <h2>The Challenge</h2>
+                <p>
+                    Start by describing the challenge. What was the prompt? What files were provided? 
+                    You can include screenshots using the `<img>` tag.
+                </p>
+
+                <h2>My Approach</h2>
+                <p>
+                    Walk through your thought process. What did you try first? What worked, and what didn't?
+                </p>
+                <p>
+                    This is a great place to put code snippets. Use `<pre>` and `<code>` tags.
+                </p>
+
+                <pre><code class="language-bash"># Example code block
+ls -la
+cat flag.txt
+                </code></pre>
+
+                <h2>Solution and Flag</h2>
+                <p>
+                    Show the final steps that led to the flag. 
+                    Explain the vulnerability and how you exploited it.
+                </p>
+
+                <p><strong>Flag:</strong> `picoCTF{your_flag_here}`</p>
+            </div>
+
+        </article>
+    </main>
+
+    <custom-footer></custom-footer>
+    
+    <script>
+      // Don't forget to run Feather icons on this page too!
+      feather.replace();
+    </script>
+</body>
+</html>
