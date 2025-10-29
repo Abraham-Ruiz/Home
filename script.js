@@ -1,13 +1,11 @@
 // Sample writeups data - in a real app this would come from an API
 const writeups = [
     {
-        id: 1,
-        title: "HackTheBox - Challenge Name",
-        category: "Web Exploitation",
-        date: "2023-05-15",
-        difficulty: "Medium",
-        tags: ["XSS", "SQLi", "JWT"],
-        summary: "Solved a complex web challenge involving multiple vulnerability chains."
+    href: "Writeups/my-first-writeup.html",
+    category: "Web Exploitation",
+    difficulty: "Easy",
+    title: "My First Writeup Title",
+    description: "A short description of the challenge and what I learned."
     },
     {
         id: 2,
