@@ -85,7 +85,7 @@ class CustomNavbar extends HTMLElement {
         </a>
         <ul class="nav-links">
           <li><a href="index.html" id="nav-home"><i data-feather="home"></i> Home</a></li>
-          <li><a href="Writeups/index.html" id="nav-projects"><i data-feather="file-text"></i> Writeups</a></li>
+          <li><a href="writeups.html" id="nav-projects"><i data-feather="file-text"></i> Writeups</a></li>
           <li><a href="about.html" id="nav-about"><i data-feather="user"></i> About</a></li>
           <li>
             <button class="theme-toggle" id="themeToggle">
@@ -129,24 +129,22 @@ class CustomNavbar extends HTMLElement {
     // --- 
     // FIX #2: Corrected "Active Page" logic
     // ---
-    const currentPath = window.location.pathname; // e.g., /REPO_NAME/Writeups/index.html
-    const homeLink = shadow.getElementById('nav-home');
-    const projectsLink = shadow.getElementById('nav-projects');
-    const aboutLink = shadow.getElementById('nav-about');
+    // --- Active Page Link Logic ---
+  const shadow = this.shadowRoot;
+  const currentPage = window.location.pathname.split('/').pop();
 
-    // This logic checks the path for keywords, which is much safer.
-    if (currentPath.includes('Writeups/')) {
-      projectsLink?.classList.add('active');
-    } else if (currentPath.includes('about.html')) {
-      aboutLink?.classList.add('active');
-    } else {
-      // Default to Home (for / or /index.html)
-      homeLink?.classList.add('active');
-    }
+      if (currentPage === 'writeups.html' || currentPage === 'ncllogwriteup.html') {
+      shadow.getElementById('nav-projects')?.classList.add('active');
+  }   else if (currentPage === 'about.html') {
+      shadow.getElementById('nav-about')?.classList.add('active');
+}     else {
+    // Default to Home for 'index.html' or ''
+      shadow.getElementById('nav-home')?.classList.add('active');
+}
 
     // --- Theme Toggle Logic (No changes needed) ---
-    const themeToggle = shadow.getElementById('themeToggle');
-    themeToggle?.addEventListener('click', () => {
+  const themeToggle = shadow.getElementById('themeToggle');
+      themeToggle?.addEventListener('click', () => {
       const html = document.documentElement;
       let newTheme;
       if (html.classList.contains('dark')) {
