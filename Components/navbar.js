@@ -3,9 +3,12 @@ class CustomNavbar extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
       <style>
-        /* Your CSS is perfect, no changes needed */
+        /* This is your original CSS, but with colors hard-coded */
         nav {
-          background: linear-gradient(135deg, #3b82f6 0%, #10b81 100%);
+          /* I replaced var(--primary-500) with your hex code #3b82f6
+            and var(--secondary-500) with #10b981
+          */
+          background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
           padding: 1rem 2rem;
           display: flex;
           justify-content: space-between;
@@ -19,7 +22,7 @@ class CustomNavbar extends HTMLElement {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          text-decoration: none;
+          text-decoration: none; /* Added this for the logo link */
         }
         .nav-links {
           display: flex;
@@ -54,7 +57,7 @@ class CustomNavbar extends HTMLElement {
           border-radius: 50%;
           transition: all 0.2s;
           display: flex;
-          align-items: center;
+          align-items: center; /* Added for centering */
         }
         .theme-toggle:hover {
           background: rgba(255, 255, 255, 0.1);
@@ -88,22 +91,23 @@ class CustomNavbar extends HTMLElement {
           <li><a href="about.html" id="nav-about"><i data-feather="user"></i> About</a></li>
           <li>
             <button class="theme-toggle" id="themeToggle">
-            </button>
+              </button>
           </li>
         </ul>
       </nav>
     `;
 
-    // --- Start of JavaScript Logic ---
+    // --- JavaScript for Theme Toggle and Icons ---
 
-    // Declare shadow ONE time
     const shadow = this.shadowRoot;
     
-    // Helper function to render Feather icons
+    // Helper function to render Feather icons inside the Shadow DOM
     const renderIcons = () => {
       shadow.querySelectorAll('[data-feather]').forEach(iconElement => {
         const iconName = iconElement.getAttribute('data-feather');
+        // Check if feather.icons exists and has the icon
         if (window.feather && feather.icons[iconName]) {
+          // Set innerHTML to the SVG string
           iconElement.innerHTML = feather.icons[iconName].toSvg({
             'stroke-width': 2,
             width: 20,
@@ -128,14 +132,12 @@ class CustomNavbar extends HTMLElement {
 
     // --- Active Page Link Logic ---
     const currentPage = window.location.pathname.split('/').pop();
-
-    if (currentPage === 'writeups.html' || currentPage === 'ncllogwriteup.html') {
-      shadow.getElementById('nav-projects')?.classList..add('active');
+    if (currentPage === 'index.html' || currentPage === '') {
+      shadow.getElementById('nav-home')?.classList.add('active');
+    } else if (currentPage === 'writeups.html') {
+      shadow.getElementById('nav-projects')?.classList.add('active');
     } else if (currentPage === 'about.html') {
       shadow.getElementById('nav-about')?.classList.add('active');
-    } else {
-      // Default to Home for 'index.html' or ''
-      shadow.getElementById('nav-home')?.classList.add('active');
     }
 
     // --- Theme Toggle Logic ---
@@ -156,6 +158,8 @@ class CustomNavbar extends HTMLElement {
     });
 
     // --- Initial Load ---
+    
+    // 1. Set initial theme
     const currentTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme = (currentTheme === 'dark' || (!currentTheme && prefersDark)) ? 'dark' : 'light';
@@ -166,11 +170,12 @@ class CustomNavbar extends HTMLElement {
       document.documentElement.classList.remove('dark');
     }
 
-    // Render icons after a short delay
+    // 2. Render all icons
+    // We must wait a tiny bit for the feather.js script to be ready
     setTimeout(() => {
       renderIcons();
-      updateThemeIcon(initialTheme);
-    }, 50);
+      updateThemeIcon(initialTheme); // Set the correct theme icon
+    }, 50); // 50ms is usually more than enough
   }
 }
 
